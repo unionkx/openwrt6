@@ -34,10 +34,9 @@ jobs:
         git clone -b main --single-branch https://github.com/openwrt/openwrt.git openwrt
 
     - name: Cache Primes
-      id: cache-primes
       uses: actions/cache@v6
       with:
-        path: ~/.cache
+        path: ~/.cp
         key: ${{ runner.os }}-${{ hashFiles('$CONFIG_FILE') }}
         restore-keys: |
           ${{ runner.os }}-
