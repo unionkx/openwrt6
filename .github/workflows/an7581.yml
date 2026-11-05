@@ -7,7 +7,7 @@ on:
 #    - cron: 0 20 * * 1
 env:
   CONFIG_FILE: an7581.config
-  CUSTOM_SH: custom6.sh
+  CUSTOM_SH: custom5.sh
 
 jobs:
   build:
