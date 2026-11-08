@@ -1,4 +1,4 @@
-name: Build xg040g
+name: Build xg040g_5
 
 on: 
   repository_dispatch:
@@ -60,7 +60,7 @@ jobs:
     - name: Upload
       uses: actions/upload-artifact@v7
       with:
-        name: xg040g
+        name: xg040g_5
         path: openwrt/bin
 
     - name: Delete workflow runs
