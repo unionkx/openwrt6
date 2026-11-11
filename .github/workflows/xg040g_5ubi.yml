@@ -33,10 +33,14 @@ jobs:
       run: |
         git clone -b master --single-branch https://github.com/pbs05/ponwrt.git openwrt
 
-    - name: Update Install feeds
+    - name: Update feeds
       run: |
         cd openwrt
         ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: |
+        cd openwrt
         ./scripts/feeds install -a
 
     - name: Configuration Customization
