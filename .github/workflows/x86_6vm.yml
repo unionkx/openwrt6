@@ -9,7 +9,7 @@ env:
   CUSTOM_SH: custom6.sh
 jobs:
   build:
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@main
@@ -17,7 +17,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /usr/local/lib/android /opt/hostedtoolcache/CodeQL /opt/microsoft
         sudo apt-get update
         sudo apt-get -y install bzip2 g++ gawk gcc git glibc-source libncurses-dev make
         sudo apt-get -y autoremove --purge
