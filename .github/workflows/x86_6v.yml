@@ -49,11 +49,11 @@ jobs:
         chmod +x $CUSTOM_SH
         cd openwrt
         $GITHUB_WORKSPACE/$CUSTOM_SH
+        make defconfig
 
     - name: Download package
       run: |
         cd openwrt
-        make defconfig
         make download
 
     - name: Build firmware
