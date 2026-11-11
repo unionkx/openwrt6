@@ -9,7 +9,7 @@ env:
   CUSTOM_SH: custom6.sh
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
     - name: Checkout
       uses: actions/checkout@main
