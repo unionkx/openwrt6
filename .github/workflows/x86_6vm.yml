@@ -1,5 +1,4 @@
 name: Build x86_6vm
-
 on: 
   repository_dispatch:
   workflow_dispatch:
@@ -8,15 +7,12 @@ on:
 env:
   CONFIG_FILE: x86v.config
   CUSTOM_SH: custom6.sh
-
 jobs:
   build:
     runs-on: ubuntu-26.04
     steps:
-
     - name: Checkout
       uses: actions/checkout@main
-
     - name: Init environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -26,21 +22,17 @@ jobs:
         sudo apt-get -y install bzip2 g++ gawk gcc git glibc-source libncurses-dev make
         sudo apt-get -y autoremove --purge
         sudo apt-get autoclean
-
     - name: Clone source code
       run: |
         git clone -b main --single-branch https://github.com/openwrt/openwrt.git openwrt
-
     - name: Update feeds
       run: |
         cd openwrt
         ./scripts/feeds update -a
-
     - name: Install feeds
       run: |
         cd openwrt
         ./scripts/feeds install -a
-
     - name: Config custom
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
@@ -48,23 +40,19 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$CUSTOM_SH
         make defconfig
-
     - name: Download package
       run: |
         cd openwrt
         make download -j2
-
     - name: Build firmware
       run: |
         cd openwrt
         make -j2
-
     - name: Upload
       uses: actions/upload-artifact@main
       with:
         name: x86_6vm
         path: openwrt/bin
-
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
       with:
