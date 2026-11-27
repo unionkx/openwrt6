@@ -24,7 +24,7 @@ jobs:
         sudo apt-get autoclean
     - name: Clone source code
       run: |
-        git clone -b master --single-branch https://github.com/pbs05/ponwrt.git openwrt
+        git clone -b main --single-branch https://github.com/openwrt/openwrt.git openwrt
     - name: Update feeds
       run: |
         cd openwrt
